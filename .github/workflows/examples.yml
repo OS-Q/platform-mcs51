@@ -1,6 +1,14 @@
-name: Examples
+name: examples
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+      - '**.rst'
+      - 'LICENSE'
+      - '.gitignore'
 
 jobs:
   build:
@@ -19,15 +27,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          token: ${{ secrets.OSQ_REPO_TOKEN }}
           submodules: "recursive"
+
       - name: Set up Python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v4
         with:
           python-version: "3.9"
+
       - name: Install dependencies
         run: |
-          pip install -U https://github.com/platformio/platformio/archive/develop.zip
+          pip install -U https://github.com/OS-Q/pio/archive/main.zip
           pio pkg install --global --platform symlink://.
+
       - name: Build examples
+        working-directory: examples
         run: |
           pio run -d ${{ matrix.example }}

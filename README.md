@@ -4,3 +4,4 @@
 
 Please navigate to [PIO Documentation](https://doc.os-q.com/pio/platforms/mcs51.html).
 
+单独针对[WCH 8051系列](https://github.com/OS-Q/platform-wch51)

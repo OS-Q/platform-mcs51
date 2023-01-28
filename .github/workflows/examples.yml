@@ -17,12 +17,12 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         example:
-          - "examples/anymcu-blink"
-          - "examples/anymcu-header"
-          - "examples/assembly-blink"
-          - "examples/native-blink"
-          - "examples/stc-blink"
-          - "examples/stc-header"
+          - "anymcu-blink"
+          - "anymcu-header"
+          - "assembly-blink"
+          - "native-blink"
+          - "stc-blink"
+          - "stc-header"
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
